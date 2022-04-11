@@ -1,0 +1,35 @@
+﻿@model List<MVC_Core_Crud.Models.EmpRes>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2 style="color:#ff0000">Employee List</h2>
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EMAIL</th>
+        <th>SALARY</th>
+        <th>CITY</th>
+        <th>DEPARTMENT</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Salary</td>
+            <td>@item.City</td>
+            <td>@item.Dept</td>
+            <td><a class="btn btn-success" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+            <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+        </tr>
+    }
+</table>
+
+<button class="btn btn-primary" asp-action="Edit" asp-controller="Home">AddNew</button>

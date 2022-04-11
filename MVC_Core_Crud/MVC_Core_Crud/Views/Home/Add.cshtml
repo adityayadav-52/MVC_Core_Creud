@@ -1,0 +1,53 @@
+﻿@model MVC_Core_Crud.Models.EmpRes
+
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="text-uppercase text-center">Add New Employee Details</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="Add">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Salary"></label>
+                        <input asp-for="Salary" class="form-control" />
+                        <span asp-validation-for="Salary" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="City"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Dept"></label>
+                        <input asp-for="Dept" class="form-control" />
+                        <span asp-validation-for="Dept" class="text-danger"></span>
+                    </div>
+
+                    <input type="submit" value="Submit" class="btn btn-sm btn-success text-uppercase rounded-0" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
