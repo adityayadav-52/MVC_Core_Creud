@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MVC_Core_Crud.DB_Context;
 using MVC_Core_Crud.Models;
@@ -61,11 +62,12 @@ namespace MVC_Core_Crud.Controllers
                 dbobj.MyInfos.Add(tblobj);
                 dbobj.SaveChanges();
             }
-            //else
-            //{
-            //    dbobj.Entry(tblobj).State = System.Data.Entity.EntityState.Modified;
-            //}
-            
+            else
+            {
+                dbobj.Entry(tblobj).State = EntityState.Modified;
+                dbobj.SaveChanges();
+            }
+
             return RedirectToAction("Index","Home");
         }
 
@@ -80,13 +82,13 @@ namespace MVC_Core_Crud.Controllers
             empobj.City = edit.City;
             empobj.Dept = edit.Dept;
 
-            ViewBag.id = edit.Id;
+            //ViewBag.id = edit.Id;
 
             return View("Add",empobj);
         }
         public IActionResult Delete(int id)
         {
-            var del = dbobj.MyInfos.Where(a => a.Id == id).First();
+            var del = dbobj.MyInfos.Where(a => a.Id == id).FirstOrDefault();
             dbobj.MyInfos.Remove(del);
             dbobj.SaveChanges();
 
